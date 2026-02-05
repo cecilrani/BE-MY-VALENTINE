@@ -1,28 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Be My Valentine 💖</title>
-    <link rel="stylesheet" href="style.css">
+  <title>Yes Click Media Upload</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #mediaSection {
+      display: none;
+      margin-top: 20px;
+    }
+
+    img, video {
+      width: 260px;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h1 id="question">NAVEN, will you be my Valentine? 💕</h1>
+<h2>Do you love me? ❤️</h2>
 
-    <div class="buttons">
-        <button id="yesBtn">YES 💖</button>
-        <button id="noBtn">NO 🙃</button>
-    </div>
+<button onclick="showMedia()">YES</button>
+<button onclick="hideMedia()">NO</button>
 
-    <div id="result" class="hidden">
-        <h1>💖 YAY!!! 💖</h1>
-        <p>Best decision ever 😘</p>
-        <h2>I love you ❤️</h2>
-    </div>
+<div id="mediaSection">
+
+  <p><b>Upload Image:</b></p>
+  <input type="file" accept="image/*" onchange="showImage(event)">
+  <br>
+  <img id="imgPreview">
+
+  <p><b>Upload Video:</b></p>
+  <input type="file" accept="video/*" onchange="showVideo(event)">
+  <br>
+  <video id="videoPreview" controls></video>
+
 </div>
 
-<script src="script.js"></script>
+<script>
+  function showMedia() {
+    document.getElementById("mediaSection").style.display = "block";
+  }
+
+  function hideMedia() {
+    document.getElementById("mediaSection").style.display = "none";
+  }
+
+  function showImage(event) {
+    const img = document.getElementById("imgPreview");
+    img.src = URL.createObjectURL(event.target.files[0]);
+    img.style.display = "block";
+  }
+
+  function showVideo(event) {
+    const video = document.getElementById("videoPreview");
+    video.src = URL.createObjectURL(event.target.files[0]);
+    video.style.display = "block";
+  }
+</script>
+
 </body>
 </html>
-
